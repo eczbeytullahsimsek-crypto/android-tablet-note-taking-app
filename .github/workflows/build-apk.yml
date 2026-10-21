@@ -19,8 +19,8 @@ jobs:
           cache: gradle
       - name: Install Android platform and build tools
         run: |
-          yes | "/cmdline-tools/latest/bin/sdkmanager" --licenses
-          "/cmdline-tools/latest/bin/sdkmanager" 'platforms;android-34' 'build-tools;34.0.0'
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" 'platforms;android-34' 'build-tools;34.0.0'
       - name: Make Gradle wrapper executable
         run: chmod +x ./gradlew
       - name: Build debug APK
@@ -32,5 +32,6 @@ jobs:
           path: app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
           retention-days: 14
+
 
 
